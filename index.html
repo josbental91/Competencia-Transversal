@@ -767,13 +767,14 @@ async function carregarResultats() {
   const profs = rows.map(r=>r.professor);
   let globalNum=0, globalDen=0;
   const criRes = CRITERIS.map(c => {
-    const vals = rows.map(r=>r.valoracions[c.id]?.val).filter(v=>v!==undefined&&v!==null);
+   const profVals = rows.map(r=>({prof:r.professor,val:r.valoracions[c.id]?.val})).filter(pv=>pv.val!==undefined&&pv.val!==null);
+    const vals = profVals.map(pv=>pv.val);
     const avg = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
     const avgR = avg!==null ? Math.round(avg*10)/10 : null;
     if(avg!==null){globalNum+=avg*c.pes;globalDen+=c.pes;}
     const lvl = avg!==null?(avg>=2.5?3:avg>=1.5?2:avg>=0.5?1:0):null;
     const obsAll = rows.map(r=>{const o=r.valoracions[c.id]?.obs;return o?{prof:r.professor,obs:o}:null;}).filter(Boolean);
-    return {c,avg:avgR,lvl,vals,obsAll,profs};
+    return {c,avg:avgR,lvl,vals,obsAll,profs:profVals.map(pv=>pv.prof)};
   });
   const gs = globalDen ? Math.round(globalNum/globalDen*10)/10 : null;
   const gLvl = gs!==null?(gs>=2.5?3:gs>=1.5?2:gs>=0.5?1:0):null;
