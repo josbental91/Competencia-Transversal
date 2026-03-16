@@ -779,7 +779,7 @@ async function carregarResultats() {
   const gs = globalDen ? Math.round(globalNum/globalDen*10)/10 : null;
   const gLvl = gs!==null?(gs>=2.5?3:gs>=1.5?2:gs>=0.5?1:0):null;
   // Convertir puntuació 0-3 a nota 0-10
-  const gs10 = gs!==null ? Math.round(gs/3*10*10)/10 : null;
+  const gs10 = gs!==null ? (gs/3*10).toFixed(2) : null;
   body.innerHTML = `
     <div class="global-panel">
       <div>
