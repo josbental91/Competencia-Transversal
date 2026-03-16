@@ -452,6 +452,12 @@ const CRITERIS = [
     {val:2,nom:'Notable',desc:'S\'expressa correctament, amb petites mancances de claredat o vocabulari.'},
     {val:1,nom:'Suficient',desc:'El missatge és poc clar o inadequat, amb errors freqüents de vocabulari i expressió.'},
     {val:0,nom:'Insuficient',desc:'No aconsegueix transmetre missatges amb claredat ni adequació. No controla el llenguatge no verbal.'}
+  ]},
+  {id:'c9',num:9,title:'Puntualitat',desc:'S\'avalua si l\'alumne/a arriba a l\'hora, comença les activitats a temps i evita retards que puguin afectar la seva feina o la del grup.',pes:5,nivells:[
+    {val:3,nom:'Excel·lent',desc:'Sempre arriba puntual i preparat.'},
+    {val:2,nom:'Notable',desc:'Arriba puntual la majoria de vegades.'},
+    {val:1,nom:'Suficient',desc:'Té retards habituals que afecten la dinàmica de la classe.'},
+    {val:0,nom:'Insuficient',desc:'Presenta impuntualitat de manera reiterada i sense justificació, amb pèrdues de temps freqüents en els desplaçaments o en els canvis d\'activitat (classe, bany, cafeteria, etc.).'}
   ]}
 ];
 
@@ -611,7 +617,14 @@ function loadAvaluacioIntoForm(row) {
       if (obsEl) obsEl.value = v.obs || '';
     }
   }
-  document.getElementById('loaded-text').textContent = `Esteu editant l'avaluació existent d'aquest alumne/a. Podeu modificar-la i desar-la de nou.`;
+  // Detect if any new criteria are missing (e.g. c9 added later)
+  const missing = CRITERIS.filter(c => row.valoracions[c.id] === undefined || row.valoracions[c.id] === null);
+  if (missing.length > 0) {
+    const noms = missing.map(c=>`C${c.num} (${c.title})`).join(', ');
+    document.getElementById('loaded-text').textContent = `Avaluació existent carregada. Cal que afegiu la valoració del criteri nou: ${noms}. La resta ja està emplenada.`;
+  } else {
+    document.getElementById('loaded-text').textContent = `Esteu editant l'avaluació existent d'aquest alumne/a. Podeu modificar-la i desar-la de nou.`;
+  }
   document.getElementById('form-loaded-notice').style.display = 'flex';
 }
 
@@ -764,11 +777,14 @@ async function carregarResultats() {
   });
   const gs = globalDen ? Math.round(globalNum/globalDen*10)/10 : null;
   const gLvl = gs!==null?(gs>=2.5?3:gs>=1.5?2:gs>=0.5?1:0):null;
+  // Convertir puntuació 0-3 a nota 0-10
+  const gs10 = gs!==null ? Math.round(gs/3*10*10)/10 : null;
   body.innerHTML = `
     <div class="global-panel">
       <div>
         <div class="global-score-label">Puntuació global ponderada</div>
         <div class="global-score-num">${gs!==null?gs:'—'}<span style="font-size:22px;opacity:0.6;font-family:'DM Sans',sans-serif;font-weight:300;">/3</span></div>
+        <div style="font-size:13px;opacity:0.85;margin-top:4px;">Nota: <strong style="font-size:18px;">${gs10!==null?gs10:'—'}</strong><span style="opacity:0.7;">/10</span></div>
       </div>
       <div class="global-bar-wrap">
         <div style="font-size:18px;font-weight:500;">${gLvl!==null?NOM_NIVELL[gLvl]:''}</div>
@@ -794,6 +810,7 @@ async function carregarResultats() {
                 ${r.avg!==null?`
                   <span class="badge ${BADGE_CLASS[r.lvl]}">${NOM_NIVELL[r.lvl]}</span>
                   <span style="font-size:12px;color:var(--text-muted);margin-left:6px;">${r.avg}/3</span>
+                  <span style="font-size:12px;color:var(--text-muted);margin-left:6px;">(${Math.round(r.avg/3*10*10)/10}/10)</span>
                   <div class="mini-bar"><div class="mini-bar-fill mf-${r.lvl}" style="width:${Math.round(r.avg/3*100)}%"></div></div>
                 `:'<span style="color:var(--text-faint);font-size:12px;">—</span>'}
               </td>
