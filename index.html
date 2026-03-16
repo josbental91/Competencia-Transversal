@@ -506,7 +506,8 @@ async function sbGet(table, filters={}) {
 }
 
 async function sbUpsert(table, data) {
-  const r = await fetch(`${SUPA_URL}/rest/v1/${table}`, {
+  const onConflict = table === 'avaluacions' ? '?on_conflict=professor,alumne' : '';
+  const r = await fetch(`${SUPA_URL}/rest/v1/${table}${onConflict}`, {
     method: 'POST',
     headers: { apikey: SUPA_KEY, Authorization: `Bearer ${SUPA_KEY}`, 'Content-Type': 'application/json', Prefer: 'resolution=merge-duplicates,return=minimal' },
     body: JSON.stringify(data)
