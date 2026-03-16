@@ -747,7 +747,6 @@ async function guardarAvaluacio() {
   btn.disabled = false; btn.querySelector('span').textContent = 'Desar avaluació';
   if(ok) {
     showMsg('form-msg','Avaluació desada correctament.','ok');
-    netejarForm();
     await refreshMyAvals(prof);
     await reloadAdmin();
   } else {
