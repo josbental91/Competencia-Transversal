@@ -817,7 +817,7 @@ async function carregarResultats() {
               </td>
               <td>
                 <div class="prof-dots">
-                  ${r.vals.map((v,i)=>`<span class="prof-dot" title="${r.profs[i]}: ${NOM_NIVELL[v]}">${r.profs[i].split(' ')[0]}: ${v}</span>`).join('')}
+                  ${r.vals.map((v,i)=>`<span class="prof-dot" title="${r.profs[i]}: ${NOM_NIVELL[v]}">${r.profs[i].split(' ')[0]}: ${v}</span>`).join('')}${r.vals.length===0?'<span style="color:var(--text-faint);font-size:12px;">—</span>':''}
                 </div>
               </td>
               <td>
