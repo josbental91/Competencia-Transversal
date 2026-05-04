@@ -23,33 +23,23 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'DM Sans', sans-serif; background: var(--surface); color: var(--text); min-height: 100vh; }
 
-
-  }
-  .login-logo {
-    width: 52px; height: 52px; background: var(--teal); border-radius: 14px;
-    display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;
-  }
+  /* LOGIN */
+  #login-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem; }
+  .login-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem 2rem; max-width: 360px; width: 100%; text-align: center; box-shadow: var(--shadow-md); }
+  .login-logo { width: 52px; height: 52px; background: var(--teal); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
   .login-logo svg { width: 26px; height: 26px; fill: white; }
   .login-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text); margin-bottom: 4px; }
   .login-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 1.75rem; line-height: 1.5; }
   .login-field { position: relative; margin-bottom: 1rem; }
-  .login-field input {
-    width: 100%; font-family: 'DM Sans', sans-serif; font-size: 15px;
-    padding: 13px 16px; border: 1.5px solid var(--border-strong); border-radius: var(--radius);
-    outline: none; transition: border 0.15s; letter-spacing: 0.05em; text-align: center;
-  }
+  .login-field input { width: 100%; font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 13px 16px; border: 1.5px solid var(--border-strong); border-radius: var(--radius); outline: none; transition: border 0.15s; letter-spacing: 0.05em; text-align: center; }
   .login-field input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,110,86,0.12); }
   .login-field input.error { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(153,60,29,0.1); }
-  .login-btn {
-    width: 100%; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
-    padding: 13px; background: var(--teal); color: white; border: none; border-radius: var(--radius);
-    cursor: pointer; transition: background 0.15s; letter-spacing: 0.01em;
-  }
+  .login-btn { width: 100%; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; padding: 13px; background: var(--teal); color: white; border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.15s; letter-spacing: 0.01em; }
   .login-btn:hover { background: var(--teal-dark); }
   .login-err { font-size: 13px; color: var(--coral); margin-top: 10px; min-height: 18px; font-weight: 500; }
   .login-footer { font-size: 11.5px; color: var(--text-faint); margin-top: 1.5rem; }
 
-  /* ── APP SHELL ──────────────────────────────────────────────── */
+  /* APP SHELL */
   #app-shell { display: none; }
 
   /* TOPBAR */
@@ -90,7 +80,20 @@
   select:focus, input[type=text]:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,110,86,0.1); }
   textarea { font-family: 'DM Sans', sans-serif; font-size: 13px; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--text); resize: vertical; min-height: 70px; width: 100%; transition: border 0.15s; outline: none; line-height: 1.5; }
   textarea:focus { border-color: var(--teal); background: var(--white); box-shadow: 0 0 0 3px rgba(15,110,86,0.1); }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+
+  /* AVALUACIÓ BADGE */
+  .aval-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 0.5rem; }
+  .aval-badge-2a { background: var(--blue-light); color: var(--blue); }
+  .aval-badge-final { background: #FFF3CD; color: #856404; border: 1px solid #FFEAA7; }
+
+  /* SELECTOR AVALUACIÓ TOGGLE */
+  .aval-toggle { display: flex; gap: 8px; margin-bottom: 1.5rem; }
+  .aval-toggle-btn { flex: 1; padding: 10px 16px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; border: 1.5px solid var(--border-strong); border-radius: var(--radius); cursor: pointer; background: var(--white); color: var(--text-muted); transition: all 0.15s; text-align: center; }
+  .aval-toggle-btn:hover { background: var(--gray-light); }
+  .aval-toggle-btn.active-2a { background: var(--blue-light); color: var(--blue); border-color: var(--blue); }
+  .aval-toggle-btn.active-final { background: #FFF9E6; color: #856404; border-color: #F0CC6E; }
 
   /* BUTTONS */
   .btn { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 10px 22px; border-radius: var(--radius); cursor: pointer; transition: all 0.15s; border: none; display: inline-flex; align-items: center; gap: 8px; }
@@ -113,6 +116,7 @@
   .criteri-info { flex: 1; }
   .criteri-title { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
   .criteri-pes { font-size: 12px; color: var(--text-muted); }
+  .criteri-optional { font-size: 11px; color: var(--text-faint); font-style: italic; margin-top: 2px; }
   .nivells-wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
   .nivell-opt { padding: 14px 14px 12px; border-right: 1px solid var(--border); cursor: pointer; transition: background 0.12s; position: relative; }
   .nivell-opt:last-child { border-right: none; }
@@ -129,6 +133,11 @@
   .n-suf { color: var(--amber); }
   .n-insuf { color: var(--coral); }
   .nivell-desc { font-size: 11.5px; color: var(--text-muted); line-height: 1.45; }
+  /* "No avaluat" option per criteri */
+  .nivell-opt-na { padding: 14px 14px 12px; border-left: 1px solid var(--border); background: var(--gray-50); cursor: pointer; transition: background 0.12s; }
+  .nivell-opt-na:hover { background: var(--gray-light); }
+  .nivell-opt-na.sel-na { background: #F1EFE8; }
+  .nivells-wrap-na { display: grid; grid-template-columns: repeat(4, 1fr) 80px; }
   .obs-row { padding: 12px 20px; border-top: 1px solid var(--border); background: var(--gray-50); }
   .obs-label { font-size: 11px; font-weight: 600; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
 
@@ -142,7 +151,6 @@
   .global-panel { background: var(--teal); color: white; border-radius: var(--radius-lg); padding: 1.5rem 2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
   .global-score-num { font-family: 'DM Serif Display', serif; font-size: 52px; line-height: 1; }
   .global-score-label { font-size: 13px; opacity: 0.8; margin-bottom: 4px; }
-  .global-score-name { font-size: 18px; font-weight: 500; }
   .global-bar-wrap { flex: 1; min-width: 160px; }
   .global-bar { height: 8px; background: rgba(255,255,255,0.25); border-radius: 4px; overflow: hidden; margin: 8px 0; }
   .global-bar-fill { height: 100%; background: rgba(255,255,255,0.85); border-radius: 4px; transition: width 0.5s ease; }
@@ -167,6 +175,8 @@
   .prof-dot { font-size: 11px; padding: 2px 8px; border-radius: 5px; background: var(--blue-light); color: var(--blue); font-weight: 500; }
   .obs-item { font-size: 12px; color: var(--text-muted); margin-bottom: 3px; line-height: 1.4; }
   .obs-item strong { color: var(--text); font-weight: 500; }
+  /* Nota: no avaluat per cap professor */
+  .no-aval-note { font-size: 12px; color: var(--text-faint); font-style: italic; }
 
   /* MY EVALUATIONS section */
   .my-aval-panel { background: var(--blue-light); border: 1px solid rgba(24,95,165,0.2); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
@@ -174,6 +184,9 @@
   .my-aval-list { display: flex; flex-wrap: wrap; gap: 8px; }
   .my-aval-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--white); border: 1px solid rgba(24,95,165,0.25); border-radius: 20px; padding: 5px 10px 5px 12px; font-size: 12px; color: var(--text); }
   .my-aval-chip span { font-weight: 500; }
+  .chip-label { font-size: 10px; padding: 1px 6px; border-radius: 4px; }
+  .chip-label-2a { background: var(--blue-light); color: var(--blue); }
+  .chip-label-final { background: #FFF3CD; color: #856404; }
   .chip-btn { background: none; border: none; cursor: pointer; padding: 2px 4px; border-radius: 4px; font-size: 12px; transition: all 0.12s; line-height: 1; }
   .chip-edit { color: var(--blue); }
   .chip-edit:hover { background: var(--blue-light); }
@@ -195,7 +208,6 @@
   .tag-rm:hover { color: var(--coral); }
   .divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
   .empty-state { padding: 3rem 2rem; text-align: center; color: var(--text-muted); font-size: 14px; }
-  .empty-icon { font-size: 32px; margin-bottom: 12px; opacity: 0.4; }
   .loading { display: flex; align-items: center; gap: 10px; color: var(--text-muted); font-size: 14px; padding: 1.5rem 0; }
   .spinner { width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--teal); border-radius: 50%; animation: spin 0.7s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
@@ -209,10 +221,20 @@
   .modal-body { font-size: 14px; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5; }
   .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
 
+  /* RESULTATS: selector d'avaluació */
+  .res-filter-row { display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap; }
+  .res-filter-row .field-group { flex: 1; min-width: 180px; max-width: 300px; }
+  .res-tabs { display: flex; gap: 6px; }
+  .res-tab { padding: 7px 16px; font-size: 13px; font-family: 'DM Sans', sans-serif; border: 1.5px solid var(--border-strong); border-radius: var(--radius); cursor: pointer; background: var(--white); color: var(--text-muted); transition: all 0.15s; font-weight: 500; }
+  .res-tab:hover { background: var(--gray-light); }
+  .res-tab.act-2a { background: var(--blue-light); color: var(--blue); border-color: var(--blue); }
+  .res-tab.act-final { background: #FFF9E6; color: #856404; border-color: #F0CC6E; }
+
   @media (max-width: 700px) {
-    .nivells-wrap { grid-template-columns: 1fr 1fr; }
+    .nivells-wrap, .nivells-wrap-na { grid-template-columns: 1fr 1fr; }
     .nivell-opt { border-bottom: 1px solid var(--border); }
-    .form-row { grid-template-columns: 1fr; }
+    .nivell-opt-na { border-top: 1px solid var(--border); grid-column: span 2; }
+    .form-row, .form-row-3 { grid-template-columns: 1fr; }
     .stats-row { grid-template-columns: 1fr 1fr; }
     .topbar-nav { gap: 0; }
     .nav-btn { padding: 7px 10px; font-size: 12px; }
@@ -221,25 +243,26 @@
     .session-info { display: none; }
   }
 
-  /* ── PDF PRINT STYLES ───────────────────────────────────────── */
+  /* PDF PRINT STYLES */
   @media print {
     body * { visibility: hidden; }
     #pdf-region, #pdf-region * { visibility: visible; }
     #pdf-region { position: absolute; inset: 0; left: 0; top: 0; }
     .topbar, .actions, .nav-btn, .btn, #page-form, #page-admin { display: none !important; }
     .no-print { display: none !important; }
-    .pdf-header { display: block !important; }
+    .pdf-print-only { display: block !important; }
+    /* Amaga columnes per professor i observacions al PDF */
+    .col-per-prof, .col-obs { display: none !important; }
     @page { margin: 1.5cm; size: A4; }
     .global-panel { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .badge, .mini-bar-fill, .criteri-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
-  .pdf-header { display: none; }
-  #pdf-region { }
+  .pdf-print-only { display: none; }
 </style>
 </head>
 <body>
 
-<!-- ── LOGIN SCREEN ───────────────────────────────────────────── -->
+<!-- LOGIN SCREEN -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo">
@@ -256,7 +279,7 @@
   </div>
 </div>
 
-<!-- ── APP SHELL ──────────────────────────────────────────────── -->
+<!-- APP SHELL -->
 <div id="app-shell">
 
 <div class="topbar">
@@ -286,7 +309,7 @@
   <div id="page-form" class="page active">
     <div class="page-header">
       <div class="page-title">Emplenar rúbrica</div>
-      <div class="page-desc">Seleccioneu el vostre nom i l'alumne/a a avaluar. Valoreu cada criteri i afegiu observacions si cal.</div>
+      <div class="page-desc">Seleccioneu el vostre nom, l'alumne/a i l'avaluació que esteu introduint. No cal valorar tots els criteris si no en teniu prou informació.</div>
     </div>
 
     <!-- Les meves avaluacions existents -->
@@ -300,7 +323,7 @@
 
     <div class="card" style="margin-bottom:1.5rem;">
       <div class="card-body">
-        <div class="form-row">
+        <div class="form-row-3">
           <div class="field-group">
             <div class="field-label">Professor/a</div>
             <select id="sel-prof" onchange="onProfChange()"><option value="">— Seleccioneu —</option></select>
@@ -308,6 +331,13 @@
           <div class="field-group">
             <div class="field-label">Alumne/a</div>
             <select id="sel-alumne" onchange="onAlumneChange()"><option value="">— Seleccioneu —</option></select>
+          </div>
+          <div class="field-group">
+            <div class="field-label">Avaluació</div>
+            <select id="sel-aval-id" onchange="onAvalIdChange()">
+              <option value="2a_avaluacio">2a Avaluació</option>
+              <option value="avaluacio_final">Avaluació Final</option>
+            </select>
           </div>
         </div>
         <div id="form-loaded-notice" style="display:none;" class="toast toast-info">
@@ -331,22 +361,31 @@
   <div id="page-resultats" class="page">
     <div class="page-header">
       <div class="page-title">Resultats consolidats</div>
-      <div class="page-desc">Visualitzeu la rúbrica final de cada alumne/a, calculada com a mitjana de totes les valoracions del professorat.</div>
+      <div class="page-desc">Visualitzeu la rúbrica final de cada alumne/a. La nota de cada criteri és la mitjana dels professors que l'han avaluat. El PDF no inclou les notes individuals per professor.</div>
     </div>
     <div class="card" style="margin-bottom:1.5rem;">
-      <div class="card-body" style="display:flex;align-items:flex-end;gap:1rem;flex-wrap:wrap;">
-        <div class="field-group" style="flex:1;min-width:200px;max-width:320px;">
-          <div class="field-label">Seleccioneu alumne/a</div>
-          <select id="sel-alumne-res" onchange="carregarResultats()"><option value="">— Seleccioneu —</option></select>
+      <div class="card-body">
+        <div class="res-filter-row">
+          <div class="field-group">
+            <div class="field-label">Alumne/a</div>
+            <select id="sel-alumne-res" onchange="carregarResultats()"><option value="">— Seleccioneu —</option></select>
+          </div>
+          <div>
+            <div class="field-label" style="margin-bottom:5px;">Avaluació</div>
+            <div class="res-tabs">
+              <button class="res-tab act-2a" id="tab-2a" onclick="selResTab('2a_avaluacio')">2a Avaluació</button>
+              <button class="res-tab" id="tab-final" onclick="selResTab('avaluacio_final')">Avaluació Final</button>
+            </div>
+          </div>
+          <button class="btn btn-pdf no-print" id="btn-pdf" onclick="exportarPDF()" style="display:none;align-self:flex-end;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            Exportar a PDF
+          </button>
         </div>
-        <button class="btn btn-pdf no-print" id="btn-pdf" onclick="exportarPDF()" style="display:none;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-          Exportar a PDF
-        </button>
       </div>
     </div>
     <div id="pdf-region">
-      <div class="pdf-header" id="pdf-header-content"></div>
+      <div class="pdf-print-only" id="pdf-header-content"></div>
       <div id="resultats-body"></div>
     </div>
   </div>
@@ -393,7 +432,7 @@
     <div class="modal-body" id="modal-body"></div>
     <div class="modal-actions">
       <button class="btn btn-secondary btn-sm" onclick="closeModal()">Cancel·lar</button>
-      <button class="btn btn-danger btn-sm" id="modal-confirm-btn" onclick="">Eliminar</button>
+      <button class="btn btn-danger btn-sm" id="modal-confirm-btn">Eliminar</button>
     </div>
   </div>
 </div>
@@ -403,6 +442,15 @@
 const SUPA_URL = 'https://dccdthwtoywitxbfpgnb.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRjY2R0aHd0b3l3aXR4YmZwZ25iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0OTMyMTksImV4cCI6MjA4OTA2OTIxOX0.fnOQVYC8Yivo27JYYlTydyWhZjpakJHO1CMUabWFckI';
 const PASSWORD = 'ctguardia26';
+
+// Mapeig d'identificadors d'avaluació a etiquetes visibles
+const AVAL_LABELS = {
+  '2a_avaluacio': '2a Avaluació',
+  'avaluacio_final': 'Avaluació Final',
+  // Retrocompatibilitat: registres antics sense camp avaluacio_id
+  'null': '2a Avaluació',
+  'undefined': '2a Avaluació'
+};
 
 const CRITERIS = [
   {id:'c1',num:1,title:'Autonomia',desc:'Avalua si sap organitzar-se, resoldre problemes per iniciativa pròpia i avançar sense dependre del professorat o dels companys.',pes:15,nivells:[
@@ -457,7 +505,7 @@ const CRITERIS = [
     {val:3,nom:'Excel·lent',desc:'Sempre arriba puntual i preparat.'},
     {val:2,nom:'Notable',desc:'Arriba puntual la majoria de vegades.'},
     {val:1,nom:'Suficient',desc:'Té retards habituals que afecten la dinàmica de la classe.'},
-    {val:0,nom:'Insuficient',desc:'Presenta impuntualitat de manera reiterada i sense justificació, amb pèrdues de temps freqüents en els desplaçaments o en els canvis d\'activitat (classe, bany, cafeteria, etc.).'}
+    {val:0,nom:'Insuficient',desc:'Presenta impuntualitat de manera reiterada i sense justificació, amb pèrdues de temps freqüents en els desplaçaments o en els canvis d\'activitat.'}
   ]}
 ];
 
@@ -466,7 +514,9 @@ const COL_NIVELL = ['insuf','suf','nota','excel'];
 const BADGE_CLASS = ['b-insuf','b-suf','b-nota','b-excel'];
 
 // ── SESSION STATE ────────────────────────────────────────────────
-let sessionProf = null; // professor name from session
+let sessionProf = null;
+let currentAvalId = '2a_avaluacio'; // avaluació activa al formulari
+let currentResAvalId = '2a_avaluacio'; // avaluació activa a resultats
 let config = { professors: [], alumnes: [] };
 
 // ── LOGIN ────────────────────────────────────────────────────────
@@ -506,7 +556,8 @@ async function sbGet(table, filters={}) {
 }
 
 async function sbUpsert(table, data) {
-  const onConflict = table === 'avaluacions' ? '?on_conflict=professor,alumne' : '';
+  // Upsert per (professor, alumne, avaluacio_id)
+  const onConflict = table === 'avaluacions' ? '?on_conflict=professor,alumne,avaluacio_id' : '';
   const r = await fetch(`${SUPA_URL}/rest/v1/${table}${onConflict}`, {
     method: 'POST',
     headers: { apikey: SUPA_KEY, Authorization: `Bearer ${SUPA_KEY}`, 'Content-Type': 'application/json', Prefer: 'resolution=merge-duplicates,return=minimal' },
@@ -543,7 +594,6 @@ async function setConfig(clau, valor) {
 async function init() {
   renderRubrica();
   await reloadConfig();
-  // Also trigger admin count update silently
   const avals = await sbGet('avaluacions');
   document.getElementById('cnt-avals').textContent = Array.isArray(avals) ? avals.length : '—';
 }
@@ -563,6 +613,16 @@ function renderSelects() {
   });
 }
 
+// ── FORMULARI: canvi d'avaluació ─────────────────────────────────
+function onAvalIdChange() {
+  currentAvalId = document.getElementById('sel-aval-id').value;
+  netejarForm();
+  // Si ja hi ha professor i alumne seleccionats, intenta carregar dades existents
+  const prof = document.getElementById('sel-prof').value;
+  const alumne = document.getElementById('sel-alumne').value;
+  if (prof && alumne) loadExistingIfAny(prof, alumne, currentAvalId);
+}
+
 // ── MY EVALUATIONS PANEL ─────────────────────────────────────────
 async function onProfChange() {
   const prof = document.getElementById('sel-prof').value;
@@ -580,8 +640,19 @@ async function onAlumneChange() {
   const prof = document.getElementById('sel-prof').value;
   const alumne = document.getElementById('sel-alumne').value;
   if (!prof || !alumne) return;
-  // Check if there's already an evaluation by this prof for this student -> load it
-  const rows = await sbGet('avaluacions', { professor: prof, alumne });
+  await loadExistingIfAny(prof, alumne, currentAvalId);
+}
+
+async function loadExistingIfAny(prof, alumne, avalId) {
+  // Primer intenta trobar registre amb avaluacio_id explícit
+  let rows = await sbGet('avaluacions', { professor: prof, alumne, avaluacio_id: avalId });
+  // Retrocompatibilitat: si és 2a_avaluacio i no en troba, busca registres antics sense camp
+  if ((!Array.isArray(rows) || rows.length === 0) && avalId === '2a_avaluacio') {
+    const allRows = await sbGet('avaluacions', { professor: prof, alumne });
+    if (Array.isArray(allRows)) {
+      rows = allRows.filter(r => !r.avaluacio_id || r.avaluacio_id === '2a_avaluacio');
+    }
+  }
   if (Array.isArray(rows) && rows.length > 0) {
     loadAvaluacioIntoForm(rows[0]);
   } else {
@@ -599,17 +670,21 @@ async function refreshMyAvals(prof) {
     return;
   }
   panel.style.display = 'block';
-  list.innerHTML = rows.map(r => `
-    <div class="my-aval-chip">
-      <span>${esc(r.alumne)}</span>
-      <button class="chip-btn chip-edit" title="Modificar" onclick="editarAvaluacio(${r.id}, '${esc(r.alumne)}')">✏️</button>
-      <button class="chip-btn chip-del" title="Eliminar" onclick="confirmarEliminar(${r.id}, '${esc(r.alumne)}')">🗑️</button>
-    </div>
-  `).join('');
+  list.innerHTML = rows.map(r => {
+    const avalLabel = AVAL_LABELS[r.avaluacio_id] || AVAL_LABELS['2a_avaluacio'];
+    const chipClass = (r.avaluacio_id === 'avaluacio_final') ? 'chip-label-final' : 'chip-label-2a';
+    return `
+      <div class="my-aval-chip">
+        <span>${esc(r.alumne)}</span>
+        <span class="chip-label ${chipClass}">${avalLabel}</span>
+        <button class="chip-btn chip-edit" title="Modificar" onclick="editarAvaluacio(${r.id}, '${esc(r.alumne)}', '${r.avaluacio_id||'2a_avaluacio'}')">✏️</button>
+        <button class="chip-btn chip-del" title="Eliminar" onclick="confirmarEliminar(${r.id}, '${esc(r.alumne)}', '${r.avaluacio_id||'2a_avaluacio'}')">🗑️</button>
+      </div>
+    `;
+  }).join('');
 }
 
 function loadAvaluacioIntoForm(row) {
-  // Fill the rubrica with existing data
   for (const c of CRITERIS) {
     const v = row.valoracions[c.id];
     if (v !== undefined && v !== null) {
@@ -617,28 +692,30 @@ function loadAvaluacioIntoForm(row) {
       const obsEl = document.getElementById(`obs-${c.id}`);
       if (obsEl) obsEl.value = v.obs || '';
     }
+    // Si val és null explícit o absent, deixa el criteri sense marcar (NA)
   }
-  // Detect if any new criteria are missing (e.g. c9 added later)
   const missing = CRITERIS.filter(c => row.valoracions[c.id] === undefined || row.valoracions[c.id] === null);
+  const avalLabel = AVAL_LABELS[row.avaluacio_id] || '2a Avaluació';
   if (missing.length > 0) {
     const noms = missing.map(c=>`C${c.num} (${c.title})`).join(', ');
-    document.getElementById('loaded-text').textContent = `Avaluació existent carregada. Cal que afegiu la valoració del criteri nou: ${noms}. La resta ja està emplenada.`;
+    document.getElementById('loaded-text').textContent = `Avaluació existent carregada (${avalLabel}). Criteris pendents: ${noms}.`;
   } else {
-    document.getElementById('loaded-text').textContent = `Esteu editant l'avaluació existent d'aquest alumne/a. Podeu modificar-la i desar-la de nou.`;
+    document.getElementById('loaded-text').textContent = `Esteu editant l'avaluació existent (${avalLabel}) d'aquest alumne/a.`;
   }
   document.getElementById('form-loaded-notice').style.display = 'flex';
 }
 
-async function editarAvaluacio(id, alumne) {
+async function editarAvaluacio(id, alumne, avalId) {
   const prof = document.getElementById('sel-prof').value;
   if (!prof) return;
-  // Select the student in the dropdown
+  // Canvia el selector d'avaluació
+  document.getElementById('sel-aval-id').value = avalId || '2a_avaluacio';
+  currentAvalId = avalId || '2a_avaluacio';
   document.getElementById('sel-alumne').value = alumne;
-  // Load data
   const rows = await sbGet('avaluacions', { professor: prof, alumne });
-  if (Array.isArray(rows) && rows.length > 0) {
-    loadAvaluacioIntoForm(rows[0]);
-    // Scroll to form top
+  const row = Array.isArray(rows) ? rows.find(r => (r.avaluacio_id||'2a_avaluacio') === currentAvalId) : null;
+  if (row) {
+    loadAvaluacioIntoForm(row);
     document.getElementById('page-form').scrollIntoView({ behavior: 'smooth' });
   }
 }
@@ -646,12 +723,15 @@ async function editarAvaluacio(id, alumne) {
 // ── MODAL CONFIRM ────────────────────────────────────────────────
 let pendingDeleteId = null;
 let pendingDeleteAlumne = null;
+let pendingDeleteAvalId = null;
 
-function confirmarEliminar(id, alumne) {
+function confirmarEliminar(id, alumne, avalId) {
   pendingDeleteId = id;
   pendingDeleteAlumne = alumne;
+  pendingDeleteAvalId = avalId;
+  const avalLabel = AVAL_LABELS[avalId] || '2a Avaluació';
   document.getElementById('modal-title').textContent = 'Eliminar avaluació';
-  document.getElementById('modal-body').textContent = `Esteu segur que voleu eliminar la vostra avaluació de "${alumne}"? Aquesta acció no es pot desfer.`;
+  document.getElementById('modal-body').textContent = `Esteu segur que voleu eliminar la vostra avaluació de "${alumne}" (${avalLabel})? Aquesta acció no es pot desfer.`;
   document.getElementById('modal-confirm-btn').onclick = executarEliminar;
   document.getElementById('modal-overlay').classList.add('open');
 }
@@ -671,6 +751,7 @@ async function executarEliminar() {
   }
   pendingDeleteId = null;
   pendingDeleteAlumne = null;
+  pendingDeleteAvalId = null;
 }
 
 function closeModal() {
@@ -686,9 +767,10 @@ function renderRubrica() {
         <div class="criteri-info">
           <div class="criteri-title">${c.title}</div>
           <div class="criteri-pes">${c.desc}</div>
+          <div class="criteri-optional">Opcional — podeu deixar-lo sense valorar si no disposeu de prou informació</div>
         </div>
       </div>
-      <div class="nivells-wrap">
+      <div class="nivells-wrap-na">
         ${c.nivells.map(n=>`
           <div class="nivell-opt" id="opt-${c.id}-${n.val}" onclick="selNivell('${c.id}',${n.val})">
             <div class="nivell-radio-row">
@@ -698,6 +780,10 @@ function renderRubrica() {
             <div class="nivell-desc">${n.desc}</div>
           </div>
         `).join('')}
+        <div class="nivell-opt-na" id="opt-${c.id}-na" onclick="clearNivell('${c.id}')">
+          <div style="font-size:11px;font-weight:600;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">No<br>avaluat</div>
+          <div style="font-size:11px;color:var(--text-faint);line-height:1.4;">Deixa aquest criteri sense puntuació</div>
+        </div>
       </div>
       <div class="obs-row">
         <div class="obs-label">Observació (opcional)</div>
@@ -713,16 +799,30 @@ function selNivell(cid, val) {
     opt.className = 'nivell-opt' + (n.val===val ? ` sel-${val}` : '');
     opt.querySelector('input').checked = (n.val===val);
   });
+  // Desmarca "No avaluat"
+  const naOpt = document.getElementById(`opt-${cid}-na`);
+  if (naOpt) naOpt.className = 'nivell-opt-na';
+}
+
+function clearNivell(cid) {
+  CRITERIS.find(c=>c.id===cid).nivells.forEach(n => {
+    const opt = document.getElementById(`opt-${cid}-${n.val}`);
+    opt.className = 'nivell-opt';
+    opt.querySelector('input').checked = false;
+  });
+  const naOpt = document.getElementById(`opt-${cid}-na`);
+  if (naOpt) naOpt.className = 'nivell-opt-na sel-na';
 }
 
 // ── NETEJAR FORM ─────────────────────────────────────────────────
-// Only clears the criteria selections & observations — does NOT delete any data
 function netejarForm() {
   CRITERIS.forEach(c => {
     c.nivells.forEach(n => {
       const opt = document.getElementById(`opt-${c.id}-${n.val}`);
       if(opt) { opt.className='nivell-opt'; opt.querySelector('input').checked=false; }
     });
+    const naOpt = document.getElementById(`opt-${c.id}-na`);
+    if(naOpt) naOpt.className = 'nivell-opt-na';
     const obs = document.getElementById(`obs-${c.id}`);
     if(obs) obs.value='';
   });
@@ -730,20 +830,37 @@ function netejarForm() {
   document.getElementById('form-msg').innerHTML='';
 }
 
-// ── DESAR AVALUACIÓ ──────────────────────────────────────────────
+// ── DESAR AVALUACIÓ (criteris opcionals) ─────────────────────────
 async function guardarAvaluacio() {
   const prof = document.getElementById('sel-prof').value;
   const alumne = document.getElementById('sel-alumne').value;
   if(!prof || !alumne) { showMsg('form-msg','Seleccioneu professor/a i alumne/a.','err'); return; }
+
   const valoracions = {};
+  let almenysUn = false;
   for(const c of CRITERIS) {
     const checked = document.querySelector(`input[name="${c.id}"]:checked`);
-    if(!checked) { showMsg('form-msg',`Cal valorar el criteri ${c.num}: ${c.title}.`,'err'); return; }
-    valoracions[c.id] = { val: parseInt(checked.value), obs: document.getElementById(`obs-${c.id}`).value.trim() };
+    if(checked) {
+      valoracions[c.id] = { val: parseInt(checked.value), obs: document.getElementById(`obs-${c.id}`).value.trim() };
+      almenysUn = true;
+    }
+    // Si no hi ha ràdio marcat, simplement no s'inclou el criteri (o s'inclou com null)
+    // Aquí no l'incloem → la nota final ignorarà aquest criteri per a aquest professor
   }
+
+  if (!almenysUn) {
+    showMsg('form-msg', 'Cal valorar almenys un criteri per desar.', 'err');
+    return;
+  }
+
   const btn = document.getElementById('btn-desar');
   btn.disabled = true; btn.querySelector('span').textContent = 'Desant...';
-  const ok = await sbUpsert('avaluacions', { professor: prof, alumne, valoracions });
+  const ok = await sbUpsert('avaluacions', {
+    professor: prof,
+    alumne,
+    avaluacio_id: currentAvalId,
+    valoracions
+  });
   btn.disabled = false; btn.querySelector('span').textContent = 'Desar avaluació';
   if(ok) {
     showMsg('form-msg','Avaluació desada correctament.','ok');
@@ -754,6 +871,14 @@ async function guardarAvaluacio() {
   }
 }
 
+// ── RESULTATS: selector d'avaluació ──────────────────────────────
+function selResTab(avalId) {
+  currentResAvalId = avalId;
+  document.getElementById('tab-2a').className = 'res-tab' + (avalId === '2a_avaluacio' ? ' act-2a' : '');
+  document.getElementById('tab-final').className = 'res-tab' + (avalId === 'avaluacio_final' ? ' act-final' : '');
+  carregarResultats();
+}
+
 // ── RESULTATS ────────────────────────────────────────────────────
 async function carregarResultats() {
   const alumne = document.getElementById('sel-alumne-res').value;
@@ -762,30 +887,64 @@ async function carregarResultats() {
   btnPdf.style.display = 'none';
   if(!alumne) { body.innerHTML='<div class="no-data">Seleccioneu un alumne/a per veure els resultats.</div>'; return; }
   body.innerHTML = '<div class="loading"><div class="spinner"></div> Carregant avaluacions...</div>';
-  const rows = await sbGet('avaluacions', { alumne });
-  if(!Array.isArray(rows) || !rows.length) { body.innerHTML='<div class="no-data">Encara no hi ha cap avaluació per a aquest alumne/a.</div>'; return; }
-  const profs = rows.map(r=>r.professor);
-  let globalNum=0, globalDen=0;
-  const criRes = CRITERIS.map(c => {
-   const profVals = rows.map(r=>({prof:r.professor,val:r.valoracions[c.id]?.val})).filter(pv=>pv.val!==undefined&&pv.val!==null);
-    const vals = profVals.map(pv=>pv.val);
-    const avg = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
-    const avgR = avg!==null ? Math.round(avg*10)/10 : null;
-    if(avg!==null){globalNum+=avg*c.pes;globalDen+=c.pes;}
-    const lvl = avg!==null?(avg>=2.5?3:avg>=1.5?2:avg>=0.5?1:0):null;
-    const obsAll = rows.map(r=>{const o=r.valoracions[c.id]?.obs;return o?{prof:r.professor,obs:o}:null;}).filter(Boolean);
-    return {c,avg:avgR,lvl,vals,obsAll,profs:profVals.map(pv=>pv.prof)};
+
+  // Recull totes les avaluacions d'aquest alumne per a la instància d'avaluació seleccionada
+  const allRows = await sbGet('avaluacions', { alumne });
+  if(!Array.isArray(allRows)) { body.innerHTML='<div class="no-data">Error en carregar dades.</div>'; return; }
+
+  // Filtra per avaluació: retrocompatibilitat per registres antics (sense avaluacio_id → és 2a)
+  const rows = allRows.filter(r => {
+    const rid = r.avaluacio_id || '2a_avaluacio';
+    return rid === currentResAvalId;
   });
-  const gs = globalDen ? Math.round(globalNum/globalDen*10)/10 : null;
-  const gLvl = gs!==null?(gs>=2.5?3:gs>=1.5?2:gs>=0.5?1:0):null;
-  // Convertir puntuació 0-3 a nota 0-10
-  const gs10 = gs!==null ? (gs/3*10).toFixed(2) : null;
+
+  const avalLabel = AVAL_LABELS[currentResAvalId];
+
+  if(!rows.length) {
+    body.innerHTML=`<div class="no-data">Encara no hi ha cap avaluació de <strong>${esc(avalLabel)}</strong> per a aquest alumne/a.</div>`;
+    return;
+  }
+
+  const profs = rows.map(r=>r.professor);
+
+  // Per a cada criteri, calcula la mitjana NOMÉS entre els professors que l'han avaluat
+  // El pes global es recalcula dinàmicament excloent criteris sense cap avaluació
+  let globalNum = 0, globalDen = 0;
+  const criRes = CRITERIS.map(c => {
+    const profVals = rows
+      .map(r => ({ prof: r.professor, val: r.valoracions[c.id]?.val }))
+      .filter(pv => pv.val !== undefined && pv.val !== null);
+    const vals = profVals.map(pv => pv.val);
+    const avg = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
+    const avgR = avg !== null ? Math.round(avg*10)/10 : null;
+    // Afegeix al global ponderant pel pes del criteri
+    if(avg !== null) { globalNum += avg * c.pes; globalDen += c.pes; }
+    const lvl = avg !== null ? (avg>=2.5?3:avg>=1.5?2:avg>=0.5?1:0) : null;
+    const obsAll = rows.map(r => {
+      const o = r.valoracions[c.id]?.obs;
+      return o ? { prof: r.professor, obs: o } : null;
+    }).filter(Boolean);
+    return { c, avg: avgR, lvl, vals, obsAll, profs: profVals.map(pv=>pv.prof) };
+  });
+
+  const gs = globalDen ? Math.round(globalNum / globalDen * 10) / 10 : null;
+  const gLvl = gs !== null ? (gs>=2.5?3:gs>=1.5?2:gs>=0.5?1:0) : null;
+  const gs10 = gs !== null ? (gs/3*10).toFixed(2) : null;
+
+  // Nota: si alguna criteri no ha estat avaluat per cap professor, el pes total és < 100%
+  const avaluatsPes = criRes.filter(r=>r.avg!==null).reduce((sum,r)=>sum+r.c.pes,0);
+  const pesMissing = 100 - avaluatsPes;
+  const pesNote = pesMissing > 0
+    ? `<div style="font-size:11px;opacity:0.7;margin-top:4px;">Pes avaluat: ${avaluatsPes}% dels 100% totals</div>`
+    : '';
+
   body.innerHTML = `
     <div class="global-panel">
       <div>
-        <div class="global-score-label">Puntuació global ponderada</div>
+        <div class="global-score-label">${avalLabel} · Puntuació global ponderada</div>
         <div class="global-score-num">${gs!==null?gs:'—'}<span style="font-size:22px;opacity:0.6;font-family:'DM Sans',sans-serif;font-weight:300;">/3</span></div>
         <div style="font-size:13px;opacity:0.85;margin-top:4px;">Nota: <strong style="font-size:18px;">${gs10!==null?gs10:'—'}</strong><span style="opacity:0.7;">/10</span></div>
+        ${pesNote}
       </div>
       <div class="global-bar-wrap">
         <div style="font-size:18px;font-weight:500;">${gLvl!==null?NOM_NIVELL[gLvl]:''}</div>
@@ -799,8 +958,8 @@ async function carregarResultats() {
           <th style="width:26%">Criteri</th>
           <th style="width:8%">Pes</th>
           <th style="width:22%">Mitjana</th>
-          <th style="width:18%">Per professor</th>
-          <th>Observacions</th>
+          <th class="col-per-prof" style="width:20%">Per professor</th>
+          <th class="col-obs">Observacions</th>
         </tr></thead>
         <tbody>
           ${criRes.map(r=>`
@@ -811,16 +970,18 @@ async function carregarResultats() {
                 ${r.avg!==null?`
                   <span class="badge ${BADGE_CLASS[r.lvl]}">${NOM_NIVELL[r.lvl]}</span>
                   <span style="font-size:12px;color:var(--text-muted);margin-left:6px;">${r.avg}/3</span>
-                  <span style="font-size:12px;color:var(--text-muted);margin-left:6px;">(${Math.round(r.avg/3*10*10)/10}/10)</span>
+                  <span style="font-size:12px;color:var(--text-muted);margin-left:4px;">(${Math.round(r.avg/3*10*10)/10}/10)</span>
                   <div class="mini-bar"><div class="mini-bar-fill mf-${r.lvl}" style="width:${Math.round(r.avg/3*100)}%"></div></div>
-                `:'<span style="color:var(--text-faint);font-size:12px;">—</span>'}
+                  <div style="font-size:11px;color:var(--text-faint);margin-top:3px;">${r.profs.length} de ${profs.length} professors</div>
+                `:'<span class="no-aval-note">No avaluat</span>'}
               </td>
-              <td>
+              <td class="col-per-prof">
                 <div class="prof-dots">
-                  ${r.vals.map((v,i)=>`<span class="prof-dot" title="${r.profs[i]}: ${NOM_NIVELL[v]}">${r.profs[i].split(' ')[0]}: ${v}</span>`).join('')}${r.vals.length===0?'<span style="color:var(--text-faint);font-size:12px;">—</span>':''}
+                  ${r.vals.map((v,i)=>`<span class="prof-dot" title="${r.profs[i]}: ${NOM_NIVELL[v]}">${r.profs[i].split(' ')[0]}: ${v}</span>`).join('')}
+                  ${r.vals.length===0?'<span style="color:var(--text-faint);font-size:12px;">—</span>':''}
                 </div>
               </td>
-              <td>
+              <td class="col-obs">
                 ${r.obsAll.length?r.obsAll.map(o=>`<div class="obs-item"><strong>${o.prof.split(' ')[0]}:</strong> ${esc(o.obs)}</div>`).join(''):'<span style="color:var(--text-faint);font-size:12px;">—</span>'}
               </td>
             </tr>
@@ -829,29 +990,23 @@ async function carregarResultats() {
       </table>
     </div>
   `;
-  // Update PDF header content & show button
+
+  // Capçalera PDF
   const now = new Date().toLocaleDateString('ca-ES', {day:'2-digit',month:'long',year:'numeric'});
   document.getElementById('pdf-header-content').innerHTML = `
     <div style="border-bottom:2px solid #0F6E56;padding-bottom:12px;margin-bottom:20px;">
       <div style="font-family:'DM Serif Display',serif;font-size:22px;color:#0F6E56;">Rúbrica de Competències Transversals</div>
-      <div style="font-size:13px;color:#6b6b67;margin-top:4px;">IES Josep Miquel Guàrdia · Curs 2025-26</div>
+      <div style="font-size:13px;color:#6b6b67;margin-top:4px;">IES Josep Miquel Guàrdia · Curs 2025-26 · ${avalLabel}</div>
       <div style="font-size:14px;font-weight:600;color:#1a1a18;margin-top:8px;">Alumne/a: ${esc(alumne)}</div>
-      <div style="font-size:12px;color:#6b6b67;">Generat el ${now} · ${profs.length} professor${profs.length>1?'s':''}: ${profs.join(', ')}</div>
+      <div style="font-size:12px;color:#6b6b67;">Generat el ${now} · ${profs.length} professor${profs.length>1?'s':''} han avaluat</div>
     </div>
   `;
   btnPdf.style.display = 'inline-flex';
 }
 
-// ── EXPORT PDF ───────────────────────────────────────────────────
+// ── EXPORT PDF (sense dades per professor) ───────────────────────
 function exportarPDF() {
-  const alumne = document.getElementById('sel-alumne-res').value || 'alumne';
-  // Show print header
-  document.getElementById('pdf-header-content').style.display = 'block';
   window.print();
-  // Hide again after
-  setTimeout(() => {
-    document.getElementById('pdf-header-content').style.display = 'none';
-  }, 500);
 }
 
 // ── ADMIN ────────────────────────────────────────────────────────
@@ -930,13 +1085,14 @@ function showMsg(id, txt, type) {
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 </script>
 
-<!-- NOTA: Cal crear també la taula 'configuracio' a Supabase:
-CREATE TABLE configuracio (
-  clau text primary key,
-  valor jsonb
-);
-ALTER TABLE configuracio ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "accés públic" ON configuracio FOR ALL USING (true) WITH CHECK (true);
+<!-- 
+NOTA IMPORTANT: Cal afegir el camp avaluacio_id a la taula avaluacions de Supabase si no existeix:
+  ALTER TABLE avaluacions ADD COLUMN IF NOT EXISTS avaluacio_id text DEFAULT '2a_avaluacio';
+  -- Actualitzar registres antics perquè tinguin el valor per defecte:
+  UPDATE avaluacions SET avaluacio_id = '2a_avaluacio' WHERE avaluacio_id IS NULL;
+  -- Recrëar la restricció única (IMPORTANT: esborra l'antiga primer):
+  ALTER TABLE avaluacions DROP CONSTRAINT IF EXISTS avaluacions_professor_alumne_key;
+  ALTER TABLE avaluacions ADD CONSTRAINT avaluacions_professor_alumne_avaluacio_id_key UNIQUE (professor, alumne, avaluacio_id);
 -->
 </body>
 </html>
