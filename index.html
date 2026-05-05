@@ -12,6 +12,7 @@
     --amber: #854F0B; --amber-light: #FAEEDA;
     --coral: #993C1D; --coral-light: #FAECE7;
     --green: #3B6D11; --green-light: #EAF3DE;
+    --purple: #6B3FA0; --purple-light: #EFE8F7;
     --gray: #5F5E5A; --gray-light: #F1EFE8; --gray-50: #F8F7F4;
     --text: #1a1a18; --text-muted: #6b6b67; --text-faint: #9b9b97;
     --border: rgba(0,0,0,0.1); --border-strong: rgba(0,0,0,0.18);
@@ -59,6 +60,16 @@
   .btn-logout { font-size: 12px; padding: 5px 12px; border: 1px solid var(--border-strong); background: var(--white); color: var(--text-muted); border-radius: 8px; cursor: pointer; transition: all 0.15s; font-family: 'DM Sans', sans-serif; }
   .btn-logout:hover { background: var(--coral-light); color: var(--coral); border-color: var(--coral); }
 
+  /* GROUP SELECTOR (sticky sota topbar) */
+  .group-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 10px 2rem; display: flex; align-items: center; gap: 14px; position: sticky; top: 60px; z-index: 99; }
+  .group-bar-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .group-tabs { display: flex; gap: 6px; }
+  .group-tab { padding: 7px 16px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; border: 1.5px solid var(--border-strong); border-radius: var(--radius); cursor: pointer; background: var(--white); color: var(--text-muted); transition: all 0.15s; }
+  .group-tab:hover { background: var(--gray-light); }
+  .group-tab.active-gm { background: var(--teal-light); color: var(--teal); border-color: var(--teal); }
+  .group-tab.active-gs { background: var(--purple-light); color: var(--purple); border-color: var(--purple); }
+  .group-bar-info { font-size: 12px; color: var(--text-faint); margin-left: auto; }
+
   /* LAYOUT */
   .main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
   .page { display: none; }
@@ -83,17 +94,9 @@
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
 
-  /* AVALUACIÓ BADGE */
-  .aval-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 0.5rem; }
-  .aval-badge-2a { background: var(--blue-light); color: var(--blue); }
-  .aval-badge-final { background: #FFF3CD; color: #856404; border: 1px solid #FFEAA7; }
-
   /* SELECTOR AVALUACIÓ TOGGLE */
   .aval-toggle { display: flex; gap: 8px; margin-bottom: 1.5rem; }
   .aval-toggle-btn { flex: 1; padding: 10px 16px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; border: 1.5px solid var(--border-strong); border-radius: var(--radius); cursor: pointer; background: var(--white); color: var(--text-muted); transition: all 0.15s; text-align: center; }
-  .aval-toggle-btn:hover { background: var(--gray-light); }
-  .aval-toggle-btn.active-2a { background: var(--blue-light); color: var(--blue); border-color: var(--blue); }
-  .aval-toggle-btn.active-final { background: #FFF9E6; color: #856404; border-color: #F0CC6E; }
 
   /* BUTTONS */
   .btn { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 10px 22px; border-radius: var(--radius); cursor: pointer; transition: all 0.15s; border: none; display: inline-flex; align-items: center; gap: 8px; }
@@ -133,7 +136,6 @@
   .n-suf { color: var(--amber); }
   .n-insuf { color: var(--coral); }
   .nivell-desc { font-size: 11.5px; color: var(--text-muted); line-height: 1.45; }
-  /* "No avaluat" option per criteri */
   .nivell-opt-na { padding: 14px 14px 12px; border-left: 1px solid var(--border); background: var(--gray-50); cursor: pointer; transition: background 0.12s; }
   .nivell-opt-na:hover { background: var(--gray-light); }
   .nivell-opt-na.sel-na { background: #F1EFE8; }
@@ -149,6 +151,7 @@
 
   /* RESULTS */
   .global-panel { background: var(--teal); color: white; border-radius: var(--radius-lg); padding: 1.5rem 2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .global-panel.gs { background: var(--purple); }
   .global-score-num { font-family: 'DM Serif Display', serif; font-size: 52px; line-height: 1; }
   .global-score-label { font-size: 13px; opacity: 0.8; margin-bottom: 4px; }
   .global-bar-wrap { flex: 1; min-width: 160px; }
@@ -175,7 +178,6 @@
   .prof-dot { font-size: 11px; padding: 2px 8px; border-radius: 5px; background: var(--blue-light); color: var(--blue); font-weight: 500; }
   .obs-item { font-size: 12px; color: var(--text-muted); margin-bottom: 3px; line-height: 1.4; }
   .obs-item strong { color: var(--text); font-weight: 500; }
-  /* Nota: no avaluat per cap professor */
   .no-aval-note { font-size: 12px; color: var(--text-faint); font-style: italic; }
 
   /* MY EVALUATIONS section */
@@ -200,10 +202,16 @@
   .stat-lbl { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
   .section-label { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 10px; margin-top: 1.5rem; display: flex; align-items: center; gap: 8px; }
   .section-label:first-of-type { margin-top: 0; }
-  .add-row { display: flex; gap: 8px; align-items: center; }
-  .add-row input { flex: 1; }
+  .add-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .add-row input { flex: 1; min-width: 200px; }
+  .add-row .grup-checks { display: flex; gap: 12px; align-items: center; }
+  .grup-check { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; cursor: pointer; }
+  .grup-check input { width: 14px; height: 14px; cursor: pointer; }
   .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
   .tag { font-size: 13px; padding: 4px 12px; background: var(--white); border: 1px solid var(--border-strong); border-radius: 20px; display: inline-flex; align-items: center; gap: 6px; color: var(--text); }
+  .tag-grup { font-size: 10px; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
+  .tag-grup-gm { background: var(--teal-light); color: var(--teal); }
+  .tag-grup-gs { background: var(--purple-light); color: var(--purple); }
   .tag-rm { background: none; border: none; cursor: pointer; color: var(--text-faint); font-size: 16px; line-height: 1; padding: 0; display: flex; align-items: center; }
   .tag-rm:hover { color: var(--coral); }
   .divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
@@ -241,6 +249,8 @@
     .main { padding: 1.25rem 1rem; }
     .topbar-right { gap: 6px; }
     .session-info { display: none; }
+    .group-bar { padding: 8px 1rem; flex-wrap: wrap; }
+    .group-bar-info { display: none; }
   }
 
   /* PDF PRINT STYLES */
@@ -248,10 +258,9 @@
     body * { visibility: hidden; }
     #pdf-region, #pdf-region * { visibility: visible; }
     #pdf-region { position: absolute; inset: 0; left: 0; top: 0; }
-    .topbar, .actions, .nav-btn, .btn, #page-form, #page-admin { display: none !important; }
+    .topbar, .group-bar, .actions, .nav-btn, .btn, #page-form, #page-admin { display: none !important; }
     .no-print { display: none !important; }
     .pdf-print-only { display: block !important; }
-    /* Amaga columnes per professor i observacions al PDF */
     .col-per-prof, .col-obs { display: none !important; }
     @page { margin: 1.5cm; size: A4; }
     .global-panel { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -303,6 +312,16 @@
   </div>
 </div>
 
+<!-- GROUP SELECTOR (sticky) -->
+<div class="group-bar">
+  <span class="group-bar-label">Grup:</span>
+  <div class="group-tabs">
+    <button class="group-tab active-gm" id="gtab-gm" onclick="setGrup('gm_comercial')">GM Activitats Comercials</button>
+    <button class="group-tab" id="gtab-gs" onclick="setGrup('gs_marqueting')">GS Màrqueting i Publicitat</button>
+  </div>
+  <span class="group-bar-info" id="group-bar-info"></span>
+</div>
+
 <div class="main">
 
   <!-- FORMULARI -->
@@ -316,7 +335,7 @@
     <div class="my-aval-panel" id="my-avals-panel" style="display:none;">
       <div class="my-aval-title">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zM7.25 5v4.5l3.5 2 .75-1.25-3-1.75V5z"/></svg>
-        Les meves avaluacions desades — podeu modificar-les o eliminar-les:
+        Les meves avaluacions desades en aquest grup — podeu modificar-les o eliminar-les:
       </div>
       <div class="my-aval-list" id="my-avals-list"></div>
     </div>
@@ -394,30 +413,39 @@
   <div id="page-admin" class="page">
     <div class="page-header">
       <div class="page-title">Configuració</div>
-      <div class="page-desc">Gestioneu la llista de professors i alumnes. Aquestes dades es guarden a Supabase i es comparteixen entre tots.</div>
+      <div class="page-desc">Gestioneu la llista de professors i alumnes. Per als professors, indiqueu a quin/s grup/s pertanyen. Els alumnes només pertanyen al grup seleccionat actualment.</div>
     </div>
     <div class="stats-row">
-      <div class="stat-card"><div class="stat-num" id="cnt-profs">—</div><div class="stat-lbl">professors</div></div>
-      <div class="stat-card"><div class="stat-num" id="cnt-alumnes">—</div><div class="stat-lbl">alumnes</div></div>
-      <div class="stat-card"><div class="stat-num" id="cnt-avals">—</div><div class="stat-lbl">avaluacions</div></div>
+      <div class="stat-card"><div class="stat-num" id="cnt-profs">—</div><div class="stat-lbl">professors (total)</div></div>
+      <div class="stat-card"><div class="stat-num" id="cnt-alumnes">—</div><div class="stat-lbl">alumnes <span id="cnt-alumnes-grup" style="font-size:11px;color:var(--text-faint);"></span></div></div>
+      <div class="stat-card"><div class="stat-num" id="cnt-avals">—</div><div class="stat-lbl">avaluacions <span id="cnt-avals-grup" style="font-size:11px;color:var(--text-faint);"></span></div></div>
     </div>
+
     <div class="section-label">Professors</div>
     <div class="add-row">
-      <input type="text" id="inp-prof" placeholder="Nom del professor/a" onkeydown="if(event.key==='Enter')addItem('professor')">
-      <button class="btn btn-secondary btn-sm" onclick="addItem('professor')">Afegir</button>
+      <input type="text" id="inp-prof" placeholder="Nom del professor/a" onkeydown="if(event.key==='Enter')addProfessor()">
+      <div class="grup-checks">
+        <label class="grup-check"><input type="checkbox" id="chk-prof-gm" checked> GM Comercial</label>
+        <label class="grup-check"><input type="checkbox" id="chk-prof-gs"> GS Màrqueting</label>
+      </div>
+      <button class="btn btn-secondary btn-sm" onclick="addProfessor()">Afegir</button>
     </div>
     <div class="tag-list" id="list-profs"></div>
+
     <div class="divider"></div>
-    <div class="section-label">Alumnes</div>
+
+    <div class="section-label">Alumnes <span style="font-size:11px;font-weight:400;color:var(--text-faint);">— del grup actiu: <strong id="alumnes-grup-name"></strong></span></div>
     <div class="add-row">
-      <input type="text" id="inp-alumne" placeholder="Nom de l'alumne/a" onkeydown="if(event.key==='Enter')addItem('alumne')">
-      <button class="btn btn-secondary btn-sm" onclick="addItem('alumne')">Afegir</button>
+      <input type="text" id="inp-alumne" placeholder="Nom de l'alumne/a" onkeydown="if(event.key==='Enter')addAlumne()">
+      <button class="btn btn-secondary btn-sm" onclick="addAlumne()">Afegir al grup actiu</button>
     </div>
     <div class="tag-list" id="list-alumnes"></div>
+
     <div class="divider"></div>
+
     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
       <button class="btn btn-secondary" onclick="exportarJSON()">Exportar dades (JSON)</button>
-      <button class="btn btn-danger" onclick="confirmarReset()">Eliminar totes les avaluacions</button>
+      <button class="btn btn-danger" onclick="confirmarReset()">Eliminar avaluacions del grup actiu</button>
       <span id="admin-msg"></span>
     </div>
   </div>
@@ -443,11 +471,14 @@ const SUPA_URL = 'https://dccdthwtoywitxbfpgnb.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRjY2R0aHd0b3l3aXR4YmZwZ25iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0OTMyMTksImV4cCI6MjA4OTA2OTIxOX0.fnOQVYC8Yivo27JYYlTydyWhZjpakJHO1CMUabWFckI';
 const PASSWORD = 'ctguardia26';
 
-// Mapeig d'identificadors d'avaluació a etiquetes visibles
+const GRUPS = {
+  'gm_comercial':   { nom: 'GM Activitats Comercials', curt: 'GM Comercial' },
+  'gs_marqueting':  { nom: 'GS Màrqueting i Publicitat', curt: 'GS Màrqueting' }
+};
+
 const AVAL_LABELS = {
   '2a_avaluacio': '2a Avaluació',
   'avaluacio_final': 'Avaluació Final',
-  // Retrocompatibilitat: registres antics sense camp avaluacio_id
   'null': '2a Avaluació',
   'undefined': '2a Avaluació'
 };
@@ -515,9 +546,14 @@ const BADGE_CLASS = ['b-insuf','b-suf','b-nota','b-excel'];
 
 // ── SESSION STATE ────────────────────────────────────────────────
 let sessionProf = null;
-let currentAvalId = '2a_avaluacio'; // avaluació activa al formulari
-let currentResAvalId = '2a_avaluacio'; // avaluació activa a resultats
-let config = { professors: [], alumnes: [] };
+let currentGrup = 'gm_comercial';   // grup seleccionat al group-bar
+let currentAvalId = '2a_avaluacio';
+let currentResAvalId = '2a_avaluacio';
+// Estructura de configuració:
+//   config.professors = [ { nom: 'Joan', grups: ['gm_comercial','gs_marqueting'] }, ... ]
+//   config.alumnes_gm_comercial = [ 'Maria', 'Pere', ... ]
+//   config.alumnes_gs_marqueting = [ ... ]
+let config = { professors: [], alumnes_gm_comercial: [], alumnes_gs_marqueting: [] };
 
 // ── LOGIN ────────────────────────────────────────────────────────
 function doLogin() {
@@ -556,8 +592,8 @@ async function sbGet(table, filters={}) {
 }
 
 async function sbUpsert(table, data) {
-  // Upsert per (professor, alumne, avaluacio_id)
-  const onConflict = table === 'avaluacions' ? '?on_conflict=professor,alumne,avaluacio_id' : '';
+  // Upsert per (professor, alumne, avaluacio_id, grup_id)
+  const onConflict = table === 'avaluacions' ? '?on_conflict=professor,alumne,avaluacio_id,grup_id' : '';
   const r = await fetch(`${SUPA_URL}/rest/v1/${table}${onConflict}`, {
     method: 'POST',
     headers: { apikey: SUPA_KEY, Authorization: `Bearer ${SUPA_KEY}`, 'Content-Type': 'application/json', Prefer: 'resolution=merge-duplicates,return=minimal' },
@@ -577,11 +613,25 @@ async function sbDeleteById(table, id) {
 // ── CONFIG ───────────────────────────────────────────────────────
 async function getConfig() {
   const rows = await sbGet('configuracio');
-  const cfg = { professors: [], alumnes: [] };
+  const cfg = { professors: [], alumnes_gm_comercial: [], alumnes_gs_marqueting: [] };
   if(!Array.isArray(rows)) return cfg;
   for(const r of rows) {
-    if(r.clau === 'professors') cfg.professors = r.valor || [];
-    if(r.clau === 'alumnes') cfg.alumnes = r.valor || [];
+    if(r.clau === 'professors') {
+      // Retrocompatibilitat: si és array de strings (format antic), els convertim
+      // assumint que pertanyen a gm_comercial (que és el grup original).
+      const v = r.valor || [];
+      if (v.length > 0 && typeof v[0] === 'string') {
+        cfg.professors = v.map(nom => ({ nom, grups: ['gm_comercial'] }));
+      } else {
+        cfg.professors = v;
+      }
+    }
+    if(r.clau === 'alumnes') {
+      // Retrocompatibilitat: registres antics → tots a gm_comercial
+      cfg.alumnes_gm_comercial = r.valor || [];
+    }
+    if(r.clau === 'alumnes_gm_comercial') cfg.alumnes_gm_comercial = r.valor || [];
+    if(r.clau === 'alumnes_gs_marqueting') cfg.alumnes_gs_marqueting = r.valor || [];
   }
   return cfg;
 }
@@ -594,8 +644,7 @@ async function setConfig(clau, valor) {
 async function init() {
   renderRubrica();
   await reloadConfig();
-  const avals = await sbGet('avaluacions');
-  document.getElementById('cnt-avals').textContent = Array.isArray(avals) ? avals.length : '—';
+  updateGroupBarInfo();
 }
 
 async function reloadConfig() {
@@ -603,27 +652,77 @@ async function reloadConfig() {
   renderSelects();
 }
 
+function getProfsForGrup(grupId) {
+  return config.professors
+    .filter(p => Array.isArray(p.grups) && p.grups.includes(grupId))
+    .map(p => p.nom);
+}
+
+function getAlumnesForGrup(grupId) {
+  if (grupId === 'gm_comercial') return config.alumnes_gm_comercial;
+  if (grupId === 'gs_marqueting') return config.alumnes_gs_marqueting;
+  return [];
+}
+
 function renderSelects() {
-  ['sel-prof','sel-alumne','sel-alumne-res'].forEach(id => {
+  const profsGrup = getProfsForGrup(currentGrup);
+  const alumnesGrup = getAlumnesForGrup(currentGrup);
+
+  ['sel-prof'].forEach(id => {
     const el = document.getElementById(id);
     const prev = el.value;
-    const list = id === 'sel-prof' ? config.professors : config.alumnes;
-    el.innerHTML = '<option value="">— Seleccioneu —</option>' + list.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('');
-    if(list.includes(prev)) el.value = prev;
+    el.innerHTML = '<option value="">— Seleccioneu —</option>' + profsGrup.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('');
+    if(profsGrup.includes(prev)) el.value = prev;
+    else el.value = '';
   });
+
+  ['sel-alumne','sel-alumne-res'].forEach(id => {
+    const el = document.getElementById(id);
+    const prev = el.value;
+    el.innerHTML = '<option value="">— Seleccioneu —</option>' + alumnesGrup.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('');
+    if(alumnesGrup.includes(prev)) el.value = prev;
+    else el.value = '';
+  });
+}
+
+// ── GRUP SELECTOR ────────────────────────────────────────────────
+async function setGrup(grupId) {
+  if (currentGrup === grupId) return;
+  currentGrup = grupId;
+  document.getElementById('gtab-gm').className = 'group-tab' + (grupId === 'gm_comercial' ? ' active-gm' : '');
+  document.getElementById('gtab-gs').className = 'group-tab' + (grupId === 'gs_marqueting' ? ' active-gs' : '');
+  // Reset sessió professor (perquè potser canvia entre grups)
+  sessionProf = null;
+  document.getElementById('session-prof-name').textContent = '—';
+  document.getElementById('my-avals-panel').style.display = 'none';
+  netejarForm();
+  renderSelects();
+  updateGroupBarInfo();
+  // Si la pàgina activa és resultats o admin, els actualitzem
+  if (document.getElementById('page-resultats').classList.contains('active')) {
+    document.getElementById('resultats-body').innerHTML = '<div class="no-data">Seleccioneu un alumne/a per veure els resultats.</div>';
+    document.getElementById('btn-pdf').style.display = 'none';
+  }
+  if (document.getElementById('page-admin').classList.contains('active')) {
+    reloadAdmin();
+  }
+}
+
+function updateGroupBarInfo() {
+  const profsCnt = getProfsForGrup(currentGrup).length;
+  const alumCnt = getAlumnesForGrup(currentGrup).length;
+  document.getElementById('group-bar-info').textContent = `${profsCnt} professors · ${alumCnt} alumnes`;
 }
 
 // ── FORMULARI: canvi d'avaluació ─────────────────────────────────
 function onAvalIdChange() {
   currentAvalId = document.getElementById('sel-aval-id').value;
   netejarForm();
-  // Si ja hi ha professor i alumne seleccionats, intenta carregar dades existents
   const prof = document.getElementById('sel-prof').value;
   const alumne = document.getElementById('sel-alumne').value;
   if (prof && alumne) loadExistingIfAny(prof, alumne, currentAvalId);
 }
 
-// ── MY EVALUATIONS PANEL ─────────────────────────────────────────
 async function onProfChange() {
   const prof = document.getElementById('sel-prof').value;
   sessionProf = prof || null;
@@ -644,13 +743,19 @@ async function onAlumneChange() {
 }
 
 async function loadExistingIfAny(prof, alumne, avalId) {
-  // Primer intenta trobar registre amb avaluacio_id explícit
-  let rows = await sbGet('avaluacions', { professor: prof, alumne, avaluacio_id: avalId });
-  // Retrocompatibilitat: si és 2a_avaluacio i no en troba, busca registres antics sense camp
-  if ((!Array.isArray(rows) || rows.length === 0) && avalId === '2a_avaluacio') {
+  let rows = await sbGet('avaluacions', { professor: prof, alumne, avaluacio_id: avalId, grup_id: currentGrup });
+  // Retrocompatibilitat: registres antics sense grup_id → són gm_comercial
+  if ((!Array.isArray(rows) || rows.length === 0) && currentGrup === 'gm_comercial') {
+    const allRows = await sbGet('avaluacions', { professor: prof, alumne, avaluacio_id: avalId });
+    if (Array.isArray(allRows)) {
+      rows = allRows.filter(r => !r.grup_id);
+    }
+  }
+  // Retrocompatibilitat: registres sense avaluacio_id ni grup_id → 2a + gm
+  if ((!Array.isArray(rows) || rows.length === 0) && avalId === '2a_avaluacio' && currentGrup === 'gm_comercial') {
     const allRows = await sbGet('avaluacions', { professor: prof, alumne });
     if (Array.isArray(allRows)) {
-      rows = allRows.filter(r => !r.avaluacio_id || r.avaluacio_id === '2a_avaluacio');
+      rows = allRows.filter(r => (!r.avaluacio_id || r.avaluacio_id === '2a_avaluacio') && !r.grup_id);
     }
   }
   if (Array.isArray(rows) && rows.length > 0) {
@@ -662,10 +767,16 @@ async function loadExistingIfAny(prof, alumne, avalId) {
 
 async function refreshMyAvals(prof) {
   if (!prof) return;
-  const rows = await sbGet('avaluacions', { professor: prof });
+  // Filtra per grup (amb retrocompatibilitat per registres antics sense grup_id)
+  const allRows = await sbGet('avaluacions', { professor: prof });
+  if (!Array.isArray(allRows)) return;
+  const rows = allRows.filter(r => {
+    const gid = r.grup_id || 'gm_comercial';
+    return gid === currentGrup;
+  });
   const panel = document.getElementById('my-avals-panel');
   const list = document.getElementById('my-avals-list');
-  if (!Array.isArray(rows) || rows.length === 0) {
+  if (rows.length === 0) {
     panel.style.display = 'none';
     return;
   }
@@ -692,7 +803,6 @@ function loadAvaluacioIntoForm(row) {
       const obsEl = document.getElementById(`obs-${c.id}`);
       if (obsEl) obsEl.value = v.obs || '';
     }
-    // Si val és null explícit o absent, deixa el criteri sense marcar (NA)
   }
   const missing = CRITERIS.filter(c => row.valoracions[c.id] === undefined || row.valoracions[c.id] === null);
   const avalLabel = AVAL_LABELS[row.avaluacio_id] || '2a Avaluació';
@@ -708,16 +818,11 @@ function loadAvaluacioIntoForm(row) {
 async function editarAvaluacio(id, alumne, avalId) {
   const prof = document.getElementById('sel-prof').value;
   if (!prof) return;
-  // Canvia el selector d'avaluació
   document.getElementById('sel-aval-id').value = avalId || '2a_avaluacio';
   currentAvalId = avalId || '2a_avaluacio';
   document.getElementById('sel-alumne').value = alumne;
-  const rows = await sbGet('avaluacions', { professor: prof, alumne });
-  const row = Array.isArray(rows) ? rows.find(r => (r.avaluacio_id||'2a_avaluacio') === currentAvalId) : null;
-  if (row) {
-    loadAvaluacioIntoForm(row);
-    document.getElementById('page-form').scrollIntoView({ behavior: 'smooth' });
-  }
+  await loadExistingIfAny(prof, alumne, currentAvalId);
+  document.getElementById('page-form').scrollIntoView({ behavior: 'smooth' });
 }
 
 // ── MODAL CONFIRM ────────────────────────────────────────────────
@@ -799,7 +904,6 @@ function selNivell(cid, val) {
     opt.className = 'nivell-opt' + (n.val===val ? ` sel-${val}` : '');
     opt.querySelector('input').checked = (n.val===val);
   });
-  // Desmarca "No avaluat"
   const naOpt = document.getElementById(`opt-${cid}-na`);
   if (naOpt) naOpt.className = 'nivell-opt-na';
 }
@@ -830,7 +934,7 @@ function netejarForm() {
   document.getElementById('form-msg').innerHTML='';
 }
 
-// ── DESAR AVALUACIÓ (criteris opcionals) ─────────────────────────
+// ── DESAR AVALUACIÓ ──────────────────────────────────────────────
 async function guardarAvaluacio() {
   const prof = document.getElementById('sel-prof').value;
   const alumne = document.getElementById('sel-alumne').value;
@@ -844,8 +948,6 @@ async function guardarAvaluacio() {
       valoracions[c.id] = { val: parseInt(checked.value), obs: document.getElementById(`obs-${c.id}`).value.trim() };
       almenysUn = true;
     }
-    // Si no hi ha ràdio marcat, simplement no s'inclou el criteri (o s'inclou com null)
-    // Aquí no l'incloem → la nota final ignorarà aquest criteri per a aquest professor
   }
 
   if (!almenysUn) {
@@ -859,6 +961,7 @@ async function guardarAvaluacio() {
     professor: prof,
     alumne,
     avaluacio_id: currentAvalId,
+    grup_id: currentGrup,
     valoracions
   });
   btn.disabled = false; btn.querySelector('span').textContent = 'Desar avaluació';
@@ -888,27 +991,26 @@ async function carregarResultats() {
   if(!alumne) { body.innerHTML='<div class="no-data">Seleccioneu un alumne/a per veure els resultats.</div>'; return; }
   body.innerHTML = '<div class="loading"><div class="spinner"></div> Carregant avaluacions...</div>';
 
-  // Recull totes les avaluacions d'aquest alumne per a la instància d'avaluació seleccionada
   const allRows = await sbGet('avaluacions', { alumne });
   if(!Array.isArray(allRows)) { body.innerHTML='<div class="no-data">Error en carregar dades.</div>'; return; }
 
-  // Filtra per avaluació: retrocompatibilitat per registres antics (sense avaluacio_id → és 2a)
+  // Filtra per grup + avaluació (amb retrocompatibilitat)
   const rows = allRows.filter(r => {
-    const rid = r.avaluacio_id || '2a_avaluacio';
-    return rid === currentResAvalId;
+    const gid = r.grup_id || 'gm_comercial';
+    const aid = r.avaluacio_id || '2a_avaluacio';
+    return gid === currentGrup && aid === currentResAvalId;
   });
 
   const avalLabel = AVAL_LABELS[currentResAvalId];
+  const grupLabel = GRUPS[currentGrup].nom;
 
   if(!rows.length) {
-    body.innerHTML=`<div class="no-data">Encara no hi ha cap avaluació de <strong>${esc(avalLabel)}</strong> per a aquest alumne/a.</div>`;
+    body.innerHTML=`<div class="no-data">Encara no hi ha cap avaluació de <strong>${esc(avalLabel)}</strong> per a aquest alumne/a (${esc(grupLabel)}).</div>`;
     return;
   }
 
   const profs = rows.map(r=>r.professor);
 
-  // Per a cada criteri, calcula la mitjana NOMÉS entre els professors que l'han avaluat
-  // El pes global es recalcula dinàmicament excloent criteris sense cap avaluació
   let globalNum = 0, globalDen = 0;
   const criRes = CRITERIS.map(c => {
     const profVals = rows
@@ -917,7 +1019,6 @@ async function carregarResultats() {
     const vals = profVals.map(pv => pv.val);
     const avg = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
     const avgR = avg !== null ? Math.round(avg*10)/10 : null;
-    // Afegeix al global ponderant pel pes del criteri
     if(avg !== null) { globalNum += avg * c.pes; globalDen += c.pes; }
     const lvl = avg !== null ? (avg>=2.5?3:avg>=1.5?2:avg>=0.5?1:0) : null;
     const obsAll = rows.map(r => {
@@ -931,17 +1032,18 @@ async function carregarResultats() {
   const gLvl = gs !== null ? (gs>=2.5?3:gs>=1.5?2:gs>=0.5?1:0) : null;
   const gs10 = gs !== null ? (gs/3*10).toFixed(2) : null;
 
-  // Nota: si alguna criteri no ha estat avaluat per cap professor, el pes total és < 100%
   const avaluatsPes = criRes.filter(r=>r.avg!==null).reduce((sum,r)=>sum+r.c.pes,0);
   const pesMissing = 100 - avaluatsPes;
   const pesNote = pesMissing > 0
     ? `<div style="font-size:11px;opacity:0.7;margin-top:4px;">Pes avaluat: ${avaluatsPes}% dels 100% totals</div>`
     : '';
 
+  const panelClass = currentGrup === 'gs_marqueting' ? 'global-panel gs' : 'global-panel';
+
   body.innerHTML = `
-    <div class="global-panel">
+    <div class="${panelClass}">
       <div>
-        <div class="global-score-label">${avalLabel} · Puntuació global ponderada</div>
+        <div class="global-score-label">${esc(grupLabel)} · ${avalLabel} · Puntuació global ponderada</div>
         <div class="global-score-num">${gs!==null?gs:'—'}<span style="font-size:22px;opacity:0.6;font-family:'DM Sans',sans-serif;font-weight:300;">/3</span></div>
         <div style="font-size:13px;opacity:0.85;margin-top:4px;">Nota: <strong style="font-size:18px;">${gs10!==null?gs10:'—'}</strong><span style="opacity:0.7;">/10</span></div>
         ${pesNote}
@@ -991,12 +1093,12 @@ async function carregarResultats() {
     </div>
   `;
 
-  // Capçalera PDF
   const now = new Date().toLocaleDateString('ca-ES', {day:'2-digit',month:'long',year:'numeric'});
+  const headerColor = currentGrup === 'gs_marqueting' ? '#6B3FA0' : '#0F6E56';
   document.getElementById('pdf-header-content').innerHTML = `
-    <div style="border-bottom:2px solid #0F6E56;padding-bottom:12px;margin-bottom:20px;">
-      <div style="font-family:'DM Serif Display',serif;font-size:22px;color:#0F6E56;">Rúbrica de Competències Transversals</div>
-      <div style="font-size:13px;color:#6b6b67;margin-top:4px;">IES Josep Miquel Guàrdia · Curs 2025-26 · ${avalLabel}</div>
+    <div style="border-bottom:2px solid ${headerColor};padding-bottom:12px;margin-bottom:20px;">
+      <div style="font-family:'DM Serif Display',serif;font-size:22px;color:${headerColor};">Rúbrica de Competències Transversals</div>
+      <div style="font-size:13px;color:#6b6b67;margin-top:4px;">IES Josep Miquel Guàrdia · Curs 2025-26 · ${esc(grupLabel)} · ${avalLabel}</div>
       <div style="font-size:14px;font-weight:600;color:#1a1a18;margin-top:8px;">Alumne/a: ${esc(alumne)}</div>
       <div style="font-size:12px;color:#6b6b67;">Generat el ${now} · ${profs.length} professor${profs.length>1?'s':''} han avaluat</div>
     </div>
@@ -1004,7 +1106,6 @@ async function carregarResultats() {
   btnPdf.style.display = 'inline-flex';
 }
 
-// ── EXPORT PDF (sense dades per professor) ───────────────────────
 function exportarPDF() {
   window.print();
 }
@@ -1013,21 +1114,78 @@ function exportarPDF() {
 async function reloadAdmin() {
   config = await getConfig();
   renderSelects();
+  updateGroupBarInfo();
   const avals = await sbGet('avaluacions');
+  const allCnt = Array.isArray(avals) ? avals.length : 0;
+  const grupCnt = Array.isArray(avals)
+    ? avals.filter(a => (a.grup_id || 'gm_comercial') === currentGrup).length
+    : 0;
+
   document.getElementById('cnt-profs').textContent = config.professors.length;
-  document.getElementById('cnt-alumnes').textContent = config.alumnes.length;
-  document.getElementById('cnt-avals').textContent = Array.isArray(avals)?avals.length:'—';
+  document.getElementById('cnt-alumnes').textContent = getAlumnesForGrup(currentGrup).length;
+  document.getElementById('cnt-alumnes-grup').textContent = `(${GRUPS[currentGrup].curt})`;
+  document.getElementById('cnt-avals').textContent = grupCnt;
+  document.getElementById('cnt-avals-grup').textContent = `de ${allCnt} totals`;
+  document.getElementById('alumnes-grup-name').textContent = GRUPS[currentGrup].nom;
+
+  // Llista de professors (totes), amb badges del grup
   const lp = document.getElementById('list-profs');
-  lp.innerHTML = config.professors.map(p=>`<span class="tag">${esc(p)}<button class="tag-rm" onclick="removeItem('professor','${esc(p)}')">×</button></span>`).join('');
+  lp.innerHTML = config.professors.map(p => {
+    const grupsBadges = (p.grups || []).map(g => {
+      const cls = g === 'gm_comercial' ? 'tag-grup-gm' : 'tag-grup-gs';
+      return `<span class="tag-grup ${cls}">${GRUPS[g].curt}</span>`;
+    }).join('');
+    return `<span class="tag">${esc(p.nom)} ${grupsBadges}<button class="tag-rm" onclick="removeProfessor('${esc(p.nom)}')" title="Eliminar professor">×</button></span>`;
+  }).join('');
+
+  // Llista d'alumnes del grup actiu
   const la = document.getElementById('list-alumnes');
-  la.innerHTML = config.alumnes.map(a=>`<span class="tag">${esc(a)}<button class="tag-rm" onclick="removeItem('alumne','${esc(a)}')">×</button></span>`).join('');
+  const alumnesGrup = getAlumnesForGrup(currentGrup);
+  la.innerHTML = alumnesGrup.map(a=>`<span class="tag">${esc(a)}<button class="tag-rm" onclick="removeAlumne('${esc(a)}')" title="Eliminar alumne d'aquest grup">×</button></span>`).join('');
 }
 
-async function addItem(tipus) {
-  const inp = document.getElementById(tipus==='professor'?'inp-prof':'inp-alumne');
+async function addProfessor() {
+  const inp = document.getElementById('inp-prof');
+  const nom = inp.value.trim();
+  if(!nom) return;
+  const inGm = document.getElementById('chk-prof-gm').checked;
+  const inGs = document.getElementById('chk-prof-gs').checked;
+  if (!inGm && !inGs) {
+    showMsg('admin-msg', 'Cal seleccionar almenys un grup per al professor.', 'err');
+    return;
+  }
+  const grups = [];
+  if (inGm) grups.push('gm_comercial');
+  if (inGs) grups.push('gs_marqueting');
+
+  const existing = config.professors.find(p => p.nom === nom);
+  if (existing) {
+    // Si ja existeix, fusiona els grups
+    const merged = Array.from(new Set([...(existing.grups || []), ...grups]));
+    existing.grups = merged;
+    showMsg('admin-msg', `Professor "${nom}" actualitzat amb els grups seleccionats.`, 'ok');
+  } else {
+    config.professors.push({ nom, grups });
+  }
+  await setConfig('professors', config.professors);
+  inp.value = '';
+  document.getElementById('chk-prof-gs').checked = false;
+  document.getElementById('chk-prof-gm').checked = true;
+  reloadAdmin();
+}
+
+async function removeProfessor(nom) {
+  if (!confirm(`Voleu eliminar "${nom}" de tots els grups? Les avaluacions ja desades es mantindran.`)) return;
+  config.professors = config.professors.filter(p => p.nom !== nom);
+  await setConfig('professors', config.professors);
+  reloadAdmin();
+}
+
+async function addAlumne() {
+  const inp = document.getElementById('inp-alumne');
   const v = inp.value.trim();
   if(!v) return;
-  const key = tipus==='professor'?'professors':'alumnes';
+  const key = currentGrup === 'gm_comercial' ? 'alumnes_gm_comercial' : 'alumnes_gs_marqueting';
   const list = config[key];
   if(list.includes(v)) { inp.value=''; return; }
   list.push(v);
@@ -1036,22 +1194,24 @@ async function addItem(tipus) {
   reloadAdmin();
 }
 
-async function removeItem(tipus, v) {
-  const key = tipus==='professor'?'professors':'alumnes';
+async function removeAlumne(v) {
+  const key = currentGrup === 'gm_comercial' ? 'alumnes_gm_comercial' : 'alumnes_gs_marqueting';
   config[key] = config[key].filter(x=>x!==v);
   await setConfig(key, config[key]);
   reloadAdmin();
 }
 
 async function confirmarReset() {
-  if(!confirm('Segur que voleu eliminar TOTES les avaluacions? Aquesta acció no es pot desfer.')) return;
+  const grupNom = GRUPS[currentGrup].nom;
+  if(!confirm(`Segur que voleu eliminar TOTES les avaluacions del grup "${grupNom}"? Aquesta acció no es pot desfer i no afecta l'altre grup.`)) return;
   const avals = await sbGet('avaluacions');
   if(Array.isArray(avals)) {
-    for(const a of avals) {
-      await fetch(`${SUPA_URL}/rest/v1/avaluacions?id=eq.${a.id}`, { method:'DELETE', headers:{ apikey:SUPA_KEY, Authorization:`Bearer ${SUPA_KEY}` }});
+    const aEliminar = avals.filter(a => (a.grup_id || 'gm_comercial') === currentGrup);
+    for(const a of aEliminar) {
+      await sbDeleteById('avaluacions', a.id);
     }
   }
-  showMsg('admin-msg','Totes les avaluacions han estat eliminades.','ok');
+  showMsg('admin-msg',`Totes les avaluacions de "${grupNom}" han estat eliminades.`,'ok');
   reloadAdmin();
 }
 
@@ -1085,14 +1245,43 @@ function showMsg(id, txt, type) {
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 </script>
 
-<!-- 
-NOTA IMPORTANT: Cal afegir el camp avaluacio_id a la taula avaluacions de Supabase si no existeix:
-  ALTER TABLE avaluacions ADD COLUMN IF NOT EXISTS avaluacio_id text DEFAULT '2a_avaluacio';
-  -- Actualitzar registres antics perquè tinguin el valor per defecte:
-  UPDATE avaluacions SET avaluacio_id = '2a_avaluacio' WHERE avaluacio_id IS NULL;
-  -- Recrëar la restricció única (IMPORTANT: esborra l'antiga primer):
-  ALTER TABLE avaluacions DROP CONSTRAINT IF EXISTS avaluacions_professor_alumne_key;
-  ALTER TABLE avaluacions ADD CONSTRAINT avaluacions_professor_alumne_avaluacio_id_key UNIQUE (professor, alumne, avaluacio_id);
+<!--
+============================================================
+  SQL D'ACTUALITZACIÓ DE LA BASE DE DADES (executeu a Supabase)
+============================================================
+
+-- 1) Afegir el camp grup_id (si no existeix)
+ALTER TABLE avaluacions ADD COLUMN IF NOT EXISTS grup_id text DEFAULT 'gm_comercial';
+
+-- 2) Marcar tots els registres existents com a 'gm_comercial' (grup original)
+UPDATE avaluacions SET grup_id = 'gm_comercial' WHERE grup_id IS NULL;
+
+-- 3) Esborrar la restricció única antiga (si existeix amb el nom previ)
+ALTER TABLE avaluacions DROP CONSTRAINT IF EXISTS avaluacions_professor_alumne_avaluacio_id_key;
+ALTER TABLE avaluacions DROP CONSTRAINT IF EXISTS avaluacions_professor_alumne_key;
+
+-- 4) Crear la nova restricció única que inclou grup_id
+ALTER TABLE avaluacions ADD CONSTRAINT avaluacions_prof_alum_aval_grup_key
+  UNIQUE (professor, alumne, avaluacio_id, grup_id);
+
+-- 5) Migració de la configuració de professors:
+--    El format antic (array de strings) es migra automàticament a l'arrencada
+--    per JavaScript. Ara bé, és recomanable executar manualment aquesta
+--    actualització per fixar el format nou a la base de dades:
+--
+--    Si tenies el registre {"clau":"professors","valor":["Joan","Maria"]},
+--    converteix-lo a:
+--    {"clau":"professors","valor":[{"nom":"Joan","grups":["gm_comercial"]},
+--                                  {"nom":"Maria","grups":["gm_comercial"]}]}
+--
+--    Pots fer-ho des del panell de Supabase editant el registre, o en JS
+--    amb les eines de l'aplicatiu.
+
+-- 6) Migració dels alumnes:
+--    El registre antic {"clau":"alumnes","valor":[...]} continua funcionant
+--    com a alumnes del grup gm_comercial. Si vols, el pots renombrar a
+--    "alumnes_gm_comercial" per coherència.
+============================================================
 -->
 </body>
 </html>
